@@ -34,10 +34,10 @@ function addToDo(){
 		//console.log(‘This is what was sent to DB: ‘, response);
 		$('#text-input').val('');
 		$('#date-input').val('');
-		$('#time-iput').val('');
+		$('#time-input').val('');
 		refreshToDoList();
 	}).catch(function (error) {
-		alert('SaveKoala function has failed to POST to DataBase!');
+		alert('addToFunction function has failed to POST to DataBase!', error);
 	});
 }
 
@@ -64,6 +64,8 @@ function renderToDoList(toDoList) {
       // For each book, append a new row to our table
         $('.to-do-list').append(`
         <div class="task">
+                <label id="favorite-toggle">
+                ${toDo.favorite ? '⭐️' : '👎🏽'}
                 <input 
                     type="text" 
                     class="text" 

@@ -5,7 +5,7 @@ const pool = require('../modules/pool');
 
 // Get all to do list items
 router.get('/', (req, res) => {
-    let queryText = 'SELECT * FROM "To_Do_List";';
+    let queryText = 'SELECT * FROM "to-do-table";';
     pool.query(queryText).then(result => {
     // Sends back the results in an object
     res.send(result.rows);
@@ -18,12 +18,13 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     const newToDo = req.body;
+    console.log(newToDo);
     const queryText = `
-	INSERT INTO "koala-table" 
-	("title", "date", "time", "favorite"); 
+	INSERT INTO "to-do-table" 
+	("title", "dueDate", "time", "favorite") 
 	VALUES ($1,$2,$3,$4);`;
 
-    pool.query(queryText, [newToDo.title, newToDo.time, newToDo.favorite])
+    pool.query(queryText, [newToDo.title, newToDo.date, newToDo.time, newToDo.favorite])
     .then((result) => {
         console.log('POST result from DB', result);
         res.sendStatus(201);
