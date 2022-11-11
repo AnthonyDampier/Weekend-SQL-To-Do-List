@@ -16,7 +16,7 @@ function addToDo(){
     console.log(date);
     time = $('#time-input').val();
     console.log(time);
-    favorite = false;
+    favorite = $('#favorite-selector').val();
     // PUT object route to DB
     newToDo = {
         title: title,
