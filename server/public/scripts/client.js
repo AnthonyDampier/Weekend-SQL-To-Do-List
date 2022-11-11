@@ -4,7 +4,28 @@ function onReady(){
     console.log('jQuery sourced.');
     refreshToDoList();
     $('#enter-btn').on('click', addToDo);
+    $('.to-do-list').on('click', '.delete-btn', deleteTask);
+    $('.to-do-list').on('click', '.edit-btn', editTask);
 };
+
+
+function deleteTask(){
+    console.log('in deleteTask()');
+    taskID = $(this).data('id');
+    console.log('ID for delete: ', taskID);
+    if(confirm('Are you sure you want to delete the task??')){
+        $.ajax({
+            method: 'DELETE',
+            url: `/toDo/${taskID}`
+        })
+        .then(function () {
+            refreshToDoList();
+        })
+        .catch(function (error) {
+            alert(`Delete Function Error: ${error}`);
+        });
+    }
+}
 
 function addToDo(){
     console.log('button enter');
@@ -80,8 +101,8 @@ function renderToDoList(toDoList) {
                     class="time"
                     value="${toDo.time}"
                     readonly>
-                <button class="edit" data-index="${i}" data-id="${toDo.id}">Edit</button>
-                <button class="delete" data-id="${toDo.id}">Delete</button>
+                <button class="edit-btn" data-index="${i}" data-id="${toDo.id}">Edit</button>
+                <button class="delete-btn" data-id="${toDo.id}">Delete</button>
             </div> 
     `);
     }
