@@ -19,7 +19,7 @@ function refreshToDoList() {
 }
 
 function renderToDoList(toDoList) {
-    $('#ToDoList').empty();
+    $('.to-do-list').empty();
 
     for(let i = 0; i < toDoList.length; i += 1) {
         let toDo = toDoList[i];
@@ -37,7 +37,6 @@ function renderToDoList(toDoList) {
                     class="date"
                     value="${toDo.dueDate}"
                     readonly>
-            
                 <button class="edit" data-index="${i}" data-id="${toDo.id}">Edit</button>
                 <button class="delete" data-id="${toDo.id}">Delete</button>
             </div> 
