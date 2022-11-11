@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
     });
 });
 
+//POST
 router.post('/', (req, res) => {
     const newToDo = req.body;
     console.log(newToDo);
@@ -32,6 +33,22 @@ router.post('/', (req, res) => {
         console.log('Error in using the router POST to DataBase, ', queryText, 'error is: ', error);
         res.sendStatus(500);
     });
+})
+
+//DELETE
+router.delete('/:id', (req, res) => {
+	const id = req.params.id;
+	console.log('Delete request for id: ', id);
+	const queryText = `DELETE FROM "to-do-table" WHERE "id" = $1;`;
+	pool.query(queryText, [id])
+		.then(() => {
+			console.log('Task Deleted');
+			res.sendStatus(200);
+		})
+		.catch((error) => {
+			console.log(`Error DELETEing with query: ${queryText}, error: ${error}`);
+			res.sendStatus(500);
+		})
 })
 
 module.exports = router;

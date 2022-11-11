@@ -4,7 +4,25 @@ function onReady(){
     console.log('jQuery sourced.');
     refreshToDoList();
     $('#enter-btn').on('click', addToDo);
+    $('.to-do-list').on('click', '.delete-btn', deleteTask);
 };
+
+
+function deleteTask(){
+    console.log('in deleteTask()');
+    taskID = $(this).data('id');
+    console.log('ID for delete: ', taskID);
+    $.ajax({
+		method: 'DELETE',
+		url: `/toDo/${taskID}`
+	})
+		.then(function () {
+			refreshToDoList();
+		})
+		.catch(function (error) {
+			alert(`Delete Function Error: ${error}`);
+		});
+}
 
 function addToDo(){
     console.log('button enter');
@@ -81,7 +99,7 @@ function renderToDoList(toDoList) {
                     value="${toDo.time}"
                     readonly>
                 <button class="edit" data-index="${i}" data-id="${toDo.id}">Edit</button>
-                <button class="delete" data-id="${toDo.id}">Delete</button>
+                <button class="delete-btn" data-id="${toDo.id}">Delete</button>
             </div> 
     `);
     }
