@@ -4,7 +4,6 @@ function onReady(){
     console.log('jQuery sourced.');
     refreshToDoList();
     $('#enter-btn').on('click', addToDo);
-    
 };
 
 function addToDo(){
