@@ -51,6 +51,23 @@ router.delete('/:id', (req, res) => {
 		})
 })
 
+//PUT toggle importance /toDo/favorite/${id}
+router.put('/favorite/:id', (req, res) => {
+    const id = req.params.id;
+    console.log('id of target: ', id);
+	let queryReady = `UPDATE "to_do_list" 
+        SET "favorite" = NOT "favorite"
+        WHERE "id" = $1;`;
+
+	pool.query(queryReady, [id]).then(() => {
+		console.log('toDo ID:', id, 'had favorite updated to ready for transfer.');
+		res.sendStatus(200);
+	}).catch((error) => {
+		console.log('Error with saving edited task:', error);
+		res.sendStatus(500);
+	});
+});
+
 //PUT edit
 router.put('/:id', (req, res) => {
     console.log('In put /:id');
