@@ -51,7 +51,7 @@ router.delete('/:id', (req, res) => {
 		})
 })
 
-//PUT
+//PUT edit
 router.put('/:id', (req, res) => {
     console.log('In put /:id');
 	const saveObject = req.body; 
@@ -62,9 +62,6 @@ router.put('/:id', (req, res) => {
     let time = saveObject.time;
     console.log(saveObject);
     
-    
-    
-    ///////////////////We stopped her for query sanitive
 	let queryReady = `UPDATE "to_do_list" 
         SET "title" = $1,
         "dueDate" = $2,
