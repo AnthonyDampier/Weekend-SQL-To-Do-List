@@ -28,7 +28,6 @@ h1#title {
 
 button {
 	border: none;
-	color: var(--softWhite);
 	width: 5em;
 	height: 2em;
 	line-height: 2em;

@@ -29,14 +29,15 @@
             <button id="enter-btn">ENTER</button>
         </div>
         <hr>
-        <div id="sort-selector">
+        <div id="sort">
             <label>Sort by:</label>
-            <select>
+            <select id="sort-selector">
                 <option></option>
-                <option>Importance</option>
-                <option>Date</option>
-                <option>Completed</option>
+                <option value="importance">Importance</option>
+                <option value="dueDate">Date</option>
+                <option value="isCompleted">Completed</option>
             </select>
+            <button id="sort-selector-btn">Enter</button>
         </div>
         <div class="to-do-list">
             <div class="task">
