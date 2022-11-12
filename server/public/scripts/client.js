@@ -6,7 +6,25 @@ function onReady(){
     $('#enter-btn').on('click', addToDo);
     $('.to-do-list').on('click', '.delete-btn', deleteTask);
     $('.to-do-list').on('click', '.edit-btn', editTask);
+    $('.to-do-list').on('click', 'label', toggleImportance);
 };
+
+function toggleImportance(){
+    //allows user to change toggle imptance by clicking stars
+    console.log('in toggleImportance');
+    id = $(this).data('id');
+    console.log('ID of to do item: ', id);
+
+    $.ajax({
+		method: 'PUT',
+		url: `/toDo/favorite/${id}`,
+	}).then(function () {
+		console.log(`Todo #${id} importance toggle in DB`);
+		refreshToDoList();
+	}).catch(function (error) {
+		alert(`markReady function failure:`, error);
+	});
+}
 
 function editTask(){
     console.log('in editTask()');
@@ -140,8 +158,8 @@ function renderToDoList(toDoList) {
       // For each book, append a new row to our table
         $('.to-do-list').append(`
         <div class="task">
-                <label id="favorite-toggle fav${toDo.id}" value=${toDo.favorite}>
-                ${toDo.favorite ? '⭐️' : '👎🏽'}
+                <label id="favorite-toggle" data-id="${toDo.id}" value=${toDo.favorite}>
+                ${toDo.favorite ? '⭐️' : '✩'}
                 </label>
                 <input 
                     type="text" 
