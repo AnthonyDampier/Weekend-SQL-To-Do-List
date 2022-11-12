@@ -22,10 +22,10 @@ router.post('/', (req, res) => {
     console.log(newToDo);
     const queryText = `
 	INSERT INTO "to_do_list" 
-	("title", "dueDate", "time", "favorite") 
-	VALUES ($1,$2,$3,$4);`;
+	("title", "dueDate", "time", "favorite", "isCompleted") 
+	VALUES ($1,$2,$3,$4,$5);`;
 
-    pool.query(queryText, [newToDo.title, newToDo.date, newToDo.time, newToDo.favorite])
+    pool.query(queryText, [newToDo.title, newToDo.date, newToDo.time, newToDo.favorite, newToDo.isCompleted])
     .then((result) => {
         console.log('POST result from DB', result);
         res.sendStatus(201);

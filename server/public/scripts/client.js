@@ -129,19 +129,21 @@ function deleteTask(){
 function addToDo(){
     console.log('button enter');
     // grab values
-    title = $('#text-input').val();
+    const title = $('#text-input').val();
     //console.log(title);
-    date = $('#date-input').val();
+    const date = $('#date-input').val();
     //console.log(date);
-    time = $('#time-input').val();
+    const time = $('#time-input').val();
     //console.log(time);
-    favorite = $('#favorite-selector').val();
+    const favorite = $('#favorite-selector').val();
     // PUT object route to DB
+    const isCompleted = false;
     newToDo = {
         title: title,
         date: date,
         time: time,
-        favorite: favorite
+        favorite: favorite,
+        isCompleted: isCompleted
     }
     console.log(newToDo)
     $.ajax({
