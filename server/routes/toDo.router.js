@@ -60,7 +60,7 @@ router.put('/favorite/:id', (req, res) => {
         WHERE "id" = $1;`;
 
 	pool.query(queryReady, [id]).then(() => {
-		console.log('toDo ID:', id, 'had favorite updated to ready for transfer.');
+		console.log('toDo ID:', id, 'had favorite updated and ready for refresh.');
 		res.sendStatus(200);
 	}).catch((error) => {
 		console.log('Error with saving edited task:', error);

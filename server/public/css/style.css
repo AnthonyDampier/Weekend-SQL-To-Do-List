@@ -51,6 +51,11 @@ button.edit-btn {
 	text-align: center;
 }
 
+button.edit-btn.save-btn {
+	background-color: goldenrod;
+	color: var(--darkness);
+}
+
 button.delete-btn {
 	background-color: var(--brightBrick);
 	color: var(--softWhite);
@@ -111,5 +116,6 @@ input.text {
 
 input.editing {
 	background-color: var(--graphite);
-	color: var(--softWhite)
+	color: var(--softWhite);
+	border: var(--concrete) solid .25px;
 }

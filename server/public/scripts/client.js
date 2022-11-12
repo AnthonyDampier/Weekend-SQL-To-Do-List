@@ -49,6 +49,7 @@ function editTask(){
         $(`${dateInputID}`).addClass("editing");
         $(`${timeInputID}`).addClass("editing");
         $(this).text('save');
+        $(this).addClass("save-btn");
     } 
     else if ($(this).text() === "save") {
         $(`${titleInputID}`).attr("readonly", true);
@@ -59,6 +60,7 @@ function editTask(){
         $(`${dateInputID}`).removeClass("editing");
         $(`${timeInputID}`).removeClass("editing");
         $(this).text('edit');
+        $(this).removeClass("save-btn");
         //create data to transfer
         editedTask = {
             id: id,
@@ -167,7 +169,7 @@ function renderToDoList(toDoList) {
         $('.to-do-list').append(`
         <div class="task">
                 <label id="favorite-toggle" data-id="${toDo.id}" value=${toDo.favorite}>
-                ${toDo.favorite ? '⭐️' : '✩'}
+                ${toDo.favorite ? '⭐️' : ' ✩ '}
                 </label>
                 <input 
                     type="text" 
