@@ -1,39 +1,55 @@
 :root {
-	--dark: #374151;
-	--darker: #1F2937;
-	--darkest: #111827;
-	--grey: #6B7280;
-	--fern: #424530;
-	--apricot: #E09132;
-	--natural: #A58E74;
-	--warmIvory: #FFEFCD;
-	--light: #FFF;
+	--softWhite: #eeeeee;
+	--concrete: #C5BAAA;
+	--craft: #806D61;
+	--brightBrick: #EE7828;
+	--graphite: #2C2C2C;
+	--darkness: #000000;
+
 }
 
-.task {
-	flex: 0%;
+* {
+	font-family: "Fira sans", sans-serif;
 }
 
-#user-input .text {
-    color: var(--dark);
-	font-size: 1.125rem;
-	width: 60%;
-	display: flexbox;
-	transition: 0.4s;
+body {
+	max-width: 600px;
+	margin: auto;
+	color: var(--softWhite);
+	background-image: linear-gradient(0.65turn, var(--graphite), var(--craft));
+	font-size: 20px;
+	flex
 }
 
-input.text{
-    color: var(--dark);
-	font-size: 1.125rem;
-	width: 60%;
-	display: flexbox;
-	transition: 0.4s;
+button {
+	border: none;
+	color: var(--softWhite);
+	width: 5em;
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+	background: linear-gradient(90deg, 
+		var(--concrete), var(--craft), 
+		var(--graphite));
+	background-size: 300%;
+	border-radius: 30px;
+	text-transform: uppercase;
+	cursor: pointer;
+	z-index: 1;
+
 }
 
-.task .date {
-	color: var(--dark);
-	font-size: 1.125rem;
-	width: 15%;
-	display: flexbox;
-	transition: 0.4s;
+button:hover{
+	animation: animation 8s linear infinite;
+	background-color: var(--brightBrick);
+}
+
+input.date {
+	border: none;
+	height: 2em;	
+	width: 6.5em;
+}
+
+#user-input {
+
 }
