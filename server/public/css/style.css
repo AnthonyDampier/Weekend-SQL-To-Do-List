@@ -68,6 +68,10 @@ button.delete-btn {
 	text-align: center;
 }
 
+button.complete {
+	background-color: #469b21;
+}
+
 button#enter-btn {
 	background-color: var(--softWhite);
 	color: var(--graphite);
@@ -79,6 +83,26 @@ button#enter-btn {
 	text-align: center;
 }
 
+button.complete-btn {
+	width: 2em;
+	height: 2em;
+}
+
+input.check-box {
+	vertical-align: baseline;
+	background-color: #469b21;
+	width: 20px;
+	height: 20px;
+}
+
+input.text.complete {
+	text-decoration: line-through;
+	background-color: #469b21;
+}
+
+input.complete {
+	background-color: #469b21;
+}
 
 
 input {
