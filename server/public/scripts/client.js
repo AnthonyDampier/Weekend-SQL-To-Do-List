@@ -7,7 +7,23 @@ function onReady(){
     $('.to-do-list').on('click', '.delete-btn', deleteTask);
     $('.to-do-list').on('click', '.edit-btn', editTask);
     $('.to-do-list').on('click', 'label', toggleImportance);
+    $('.to-do-list').on('click', '.complete-btn', markComplete);
 };
+
+function markComplete(){
+    const id = $(this).data('id');
+    console.log(id);
+    //has attribute checked
+    $.ajax({
+		method: 'PUT',
+		url: `/toDo/isCompleted/${id}`,
+	}).then(function () {
+		console.log(`Todo #${id} isCompleted toggle in DB`);
+		refreshToDoList();
+	}).catch(function (error) {
+		alert(`markReady function failure:`, error);
+	});
+}
 
 function toggleImportance(){
     //allows user to change toggle imptance by clicking stars
@@ -162,7 +178,7 @@ function renderToDoList(toDoList) {
 
     for(let i = 0; i < toDoList.length; i += 1) {
         let toDo = toDoList[i];
-        //console.log(toDo);
+        console.log(toDo);
         //console.log(toDo.time);
         toDo.dueDate = 
       // For each book, append a new row to our table
@@ -173,22 +189,26 @@ function renderToDoList(toDoList) {
                 </label>
                 <input 
                     type="text" 
-                    class="text" 
+                    class="text ${toDo.isCompleted ? 'complete' : 'not-complete'}"" 
                     id="title_${toDo.id}"
                     value="${toDo.title}"
                     readonly >
                 <input 
                     type="date"
-                    class="date"
+                    class="date ${toDo.isCompleted ? 'complete' : 'not-complete'}""
                     id="date_${toDo.id}"
                     value="${toDo.dueDate.slice(0, 10).replace('T', ' ')}"
                     readonly >
                 <input
                     type="time"
-                    class="time"
+                    class="time ${toDo.isCompleted ? 'complete' : 'not-complete'}""
                     id="time_${toDo.id}"
                     value="${toDo.time}"
                     readonly >
+
+                <button class="complete-btn ${toDo.isCompleted ? 'complete' : 'not-complete'}" 
+                data-index="${i}" data-id="${toDo.id}">${toDo.isCompleted ? '✓' : '◼️'}</button>
+
                 <button class="edit-btn" data-index="${i}" data-id="${toDo.id}">edit</button>
                 <button class="delete-btn" data-id="${toDo.id}">delete</button>
             </div> 
