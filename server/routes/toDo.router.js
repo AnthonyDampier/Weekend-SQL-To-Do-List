@@ -51,4 +51,22 @@ router.delete('/:id', (req, res) => {
 		})
 })
 
+//PUT
+router.put('/:id', (req, res) => {
+    console.log('In put /:id');
+	const toDoID = req.params.id;
+	let queryReady = `UPDATE "to-do-table" 
+        SET "readyForTransfer" = NOT "readyForTransfer" 
+        
+        
+        WHERE "id" = $1;`;
+	pool.query(queryReady, [koalaID]).then(() => {
+		console.log('Koala ID:', koalaID, 'has been updated to ready for transfer.');
+		res.sendStatus(200);
+	}).catch((error) => {
+		console.log('Error with marking koala ready:', error);
+		res.sendStatus(500);
+	});
+});
+
 module.exports = router;

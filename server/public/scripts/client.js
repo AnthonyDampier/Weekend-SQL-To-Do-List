@@ -18,7 +18,7 @@ function editTask(){
     //console.log(dateString);
     const titleInputID = '#title_' + id;
     const timeInputID = '#time_' + id;
-    const favID = `#fav_` + id;
+
     if ($(this).text() === "edit") {
         console.log('edit.text() = edit')
         //.log($(`${titleInputID}`).val());
@@ -35,33 +35,34 @@ function editTask(){
         $(this).text('edit');
         //create data to transfer
         editedTask = {
+            id: id,
             title: $(`${titleInputID}`).val(),
             date: $(`${dateInputID}`).val(),
-            time: $(`${timeInputID}`).val(),
-            favorite: $(`${favID}`).val()
+            time: $(`${timeInputID}`).val()
+            //favorite: $(`${favID}`).val()
         }
         console.log('Edited tasked values: ',editedTask)
         //save attributes update
-        //saveEdit(editedTask);
+        saveEdit(editedTask);
     } else {
         console.log("Improper button innerHTML (EDIT/SAVE)");
     }
 }
 
-// function saveEdit() {
-// 	const id = $(this).data("id");
-// 	console.log('In markReady working with ID#', id);
-// 	$.ajax({
-// 		method: 'PUT',
-// 		url: `/koalas/${id}`,
-//         data: 
-// 	}).then(function () {
-// 		console.log(`Koala #${id} is ready to go.`);
-// 		getKoalas();
-// 	}).catch(function (error) {
-// 		alert(`markReady function failure:`, error);
-// 	});
-// }
+function saveEdit(saveEdit) {
+	const id = $(this).data("id");
+	console.log('In saving edit working with ID#', id);
+	$.ajax({
+		method: 'PUT',
+		url: `/toDo/${id}`,
+        data: saveEdit
+	}).then(function () {
+		console.log(`Todo #${id} is ready to go.`);
+		refreshToDoList();
+	}).catch(function (error) {
+		alert(`markReady function failure:`, error);
+	});
+}
 
 function deleteTask(){
     console.log('in deleteTask()');
@@ -139,8 +140,9 @@ function renderToDoList(toDoList) {
       // For each book, append a new row to our table
         $('.to-do-list').append(`
         <div class="task">
-                <label id="favorite-toggle fav_${toDo.id}" value=${toDo.favorite}>
+                <label id="favorite-toggle fav${toDo.id}" value=${toDo.favorite}>
                 ${toDo.favorite ? '⭐️' : '👎🏽'}
+                </label>
                 <input 
                     type="text" 
                     class="text" 
