@@ -8,6 +8,37 @@ function onReady(){
     $('.to-do-list').on('click', '.edit-btn', editTask);
 };
 
+function editTask(){
+    console.log('in editTask()');
+    //remove read only from object
+    console.log('inner text ',$(this).text());
+    const id = $(this).data("id");
+    //console.log(id);
+    const dateInputID = '#date_' + id;
+    //console.log(dateString);
+    const titleInputID = '#title_' + id;
+    const timeInputID = '#time_' + id;
+    if ($(this).text() === "edit") {
+        console.log('edit.text() = edit')
+        //.log($(`${titleInputID}`).val());
+        $(`${titleInputID}`).attr("readonly", false);
+        $(`${dateInputID}`).attr("readonly", false);
+        $(`${dateInputID}`).attr("type", 'date');
+        $(`${timeInputID}`).attr("readonly", false);
+        $(this).text('save');
+    } 
+    else if ($(this).text() === "save") {
+        $(`${titleInputID}`).attr("readonly", true);
+        $(`${dateInputID}`).attr("readonly", true);
+        $(`${dateInputID}`).attr("type", 'text');
+        $(`${timeInputID}`).attr("readonly", true);
+        $(this).text('edit');
+        //save attributes update
+        
+    } else {
+        console.log("Improper button innerHTML (EDIT/SAVE)");
+    }
+}
 
 function deleteTask(){
     console.log('in deleteTask()');
@@ -89,20 +120,23 @@ function renderToDoList(toDoList) {
                 <input 
                     type="text" 
                     class="text" 
+                    id="title_${toDo.id}"
                     value="${toDo.title}"
-                    readonly>
+                    readonly >
                 <input 
                     type="text"
                     class="date"
-                    value="${(Date(toDo.dueDate)).slice(0, 15).replace('T', ' ')}"
-                    readonly>
+                    id="date_${toDo.id}"
+                    value="${(Date(toDo.dueDate)).slice(0, 15).replace('M', ' ')}"
+                    readonly >
                 <input
                     type="time"
                     class="time"
+                    id="time_${toDo.id}"
                     value="${toDo.time}"
-                    readonly>
-                <button class="edit-btn" data-index="${i}" data-id="${toDo.id}">Edit</button>
-                <button class="delete-btn" data-id="${toDo.id}">Delete</button>
+                    readonly >
+                <button class="edit-btn" data-index="${i}" data-id="${toDo.id}">edit</button>
+                <button class="delete-btn" data-id="${toDo.id}">delete</button>
             </div> 
     `);
     }
