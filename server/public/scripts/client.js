@@ -37,7 +37,7 @@ function editTask(){
         editedTask = {
             id: id,
             title: $(`${titleInputID}`).val(),
-            date: $(`${dateInputID}`).val(),
+            dueDate: $(`${dateInputID}`).val(),
             time: $(`${timeInputID}`).val()
             //favorite: $(`${favID}`).val()
         }
