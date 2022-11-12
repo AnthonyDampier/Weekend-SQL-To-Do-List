@@ -10,10 +10,14 @@
 
 body {
 	background-color: var(--graphite);
-	width: 1000px;
+	width: 980px;
 	margin: auto;
 	color: var(--softWhite);
 	font-size: 20px;
+	flex: auto;
+}
+div {
+	margin: auto;
 	flex: auto;
 }
 
@@ -75,8 +79,8 @@ button.complete {
 button#enter-btn {
 	background-color: var(--softWhite);
 	color: var(--graphite);
-	width: 5em;
-	height: 2em;
+	width: 10em;
+	height: 2.85em;
 	line-height: 2em;
 	font-size: 15px;
 	font-weight: bold;
