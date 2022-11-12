@@ -109,6 +109,7 @@ input.text {
 	width: 30em;
 }
 
-#user-input {
-
+input.editing {
+	background-color: var(--graphite);
+	color: var(--softWhite)
 }

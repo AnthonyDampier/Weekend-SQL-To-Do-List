@@ -29,7 +29,7 @@ function toggleImportance(){
 function editTask(){
     console.log('in editTask()');
     //remove read only from object
-    console.log('inner text ',$(this).text());
+    //console.log('inner text ',$(this).text());
     const id = $(this).data("id");
     //console.log(id);
     const dateInputID = '#date_' + id;
@@ -42,14 +42,22 @@ function editTask(){
         //.log($(`${titleInputID}`).val());
         $(`${titleInputID}`).attr("readonly", false);
         $(`${dateInputID}`).attr("readonly", false);
-        $(`${dateInputID}`).attr("type", 'date');
+        //$(`${dateInputID}`).attr("type", 'date');
         $(`${timeInputID}`).attr("readonly", false);
+        $(`${titleInputID}`).addClass("editing");
+        $(`${dateInputID}`).addClass("editing");
+        $(`${dateInputID}`).addClass("editing");
+        $(`${timeInputID}`).addClass("editing");
         $(this).text('save');
     } 
     else if ($(this).text() === "save") {
         $(`${titleInputID}`).attr("readonly", true);
         $(`${dateInputID}`).attr("readonly", true);
         $(`${timeInputID}`).attr("readonly", true);
+        $(`${titleInputID}`).removeClass("editing");
+        $(`${dateInputID}`).removeClass("editing");
+        $(`${dateInputID}`).removeClass("editing");
+        $(`${timeInputID}`).removeClass("editing");
         $(this).text('edit');
         //create data to transfer
         editedTask = {
@@ -104,11 +112,11 @@ function addToDo(){
     console.log('button enter');
     // grab values
     title = $('#text-input').val();
-    console.log(title);
+    //console.log(title);
     date = $('#date-input').val();
-    console.log(date);
+    //console.log(date);
     time = $('#time-input').val();
-    console.log(time);
+    //console.log(time);
     favorite = $('#favorite-selector').val();
     // PUT object route to DB
     newToDo = {
@@ -140,7 +148,7 @@ function refreshToDoList() {
     type: 'GET',
     url: '/toDo'
     }).then(function(response) {
-        console.log(response);
+        //console.log(response);
         renderToDoList(response);
     }).catch(function(error){
         console.log('error in GET', error);
@@ -152,8 +160,8 @@ function renderToDoList(toDoList) {
 
     for(let i = 0; i < toDoList.length; i += 1) {
         let toDo = toDoList[i];
-        console.log(toDo);
-        console.log(toDo.time);
+        //console.log(toDo);
+        //console.log(toDo.time);
         toDo.dueDate = 
       // For each book, append a new row to our table
         $('.to-do-list').append(`
