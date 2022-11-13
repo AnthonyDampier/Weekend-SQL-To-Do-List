@@ -71,7 +71,7 @@ button.delete-btn {
 	text-align: center;
 }
 
-button.complete {
+button.complete-btn.complete {
 	background-color: #469b21;
 }
 
@@ -87,8 +87,9 @@ button#enter-btn {
 }
 
 button.complete-btn {
-	width: 2em;
-	height: 2em;
+	width: 2.65em;
+	height: 2.65em;
+	text-align: center;
 }
 
 input.check-box {
