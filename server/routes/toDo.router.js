@@ -4,7 +4,38 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 
+// reports various sorts query to be rendered to DOM
+router.get('/sort/:sortDecision', (req, res) => {
+    const sort = req.params.sortDecision;
+    console.log('how query will request sort:', sort);
+    let querySort= ''
+    switch (sort){
+        case 'importance': console.log('in importance switch');
+            querySort = `"favorite" DESC`
+            break;
+        case 'dueDate': console.log('in dueDate switch');
+            querySort = `"dueDate"`
+            break;
+        case 'isCompleted': console.log('in isCompleted switch');
+            querySort = `"isCompleted" DESC`;
+            break;
+        default:
+            //console.log('Sort by: ', sort.sortby);
+            //let queryText = 'SELECT * FROM "to_do_list" ORDER BY "id";';
+            
+    }
+    let queryText = 'SELECT * FROM "to_do_list" ORDER BY' + querySort;
+    pool.query(queryText).then(result => {
+        // Sends back the results in an object
+        res.send(result.rows);
+        })
+        .catch(error => {
+        console.log('error getting toDoList', error);
+        res.sendStatus(500);
+        });
+});
 
+// reports all to_do_list objects
 router.get('/', (req, res) => {
     let queryText = 'SELECT * FROM "to_do_list" ORDER BY "id";';
     pool.query(queryText).then(result => {

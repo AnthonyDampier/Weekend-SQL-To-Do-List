@@ -14,13 +14,11 @@ function onReady(){
 function sortBy(){
     console.log('in sortBy');
     console.log('Sorting by: ', $('#sort-selector').val());
-    sortBy = $('#sort-selector').val();
-    sortBy = { sortBy: sortBy}
-
+    let sortDecision = $('#sort-selector').val();
+    console.log(sortDecision);
     $.ajax({
         method: 'GET',
-		url: `/toDo/sort`,
-        data: saveEdit
+		url: `/toDo/sort/${sortDecision}`,
     }).then(function(response) {
         //console.log(response);
         renderToDoList(response);
@@ -54,7 +52,7 @@ function toggleImportance(){
 		url: `/toDo/favorite/${id}`,
 	}).then(function () {
 		console.log(`Todo #${id} importance toggle in DB`);
-		//refreshToDoList();
+		refreshToDoList();
 	}).catch(function (error) {
 		alert(`markReady function failure:`, error);
 	});
