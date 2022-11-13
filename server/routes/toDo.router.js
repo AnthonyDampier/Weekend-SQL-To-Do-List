@@ -3,7 +3,8 @@ const router = express.Router();
 
 const pool = require('../modules/pool');
 
-// GET all 
+
+
 router.get('/', (req, res) => {
     let queryText = 'SELECT * FROM "to_do_list" ORDER BY "id";';
     pool.query(queryText).then(result => {
@@ -15,6 +16,9 @@ router.get('/', (req, res) => {
     res.sendStatus(500);
     });
 });
+
+//SORT
+
 
 //POST
 router.post('/', (req, res) => {

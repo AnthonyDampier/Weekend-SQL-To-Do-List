@@ -8,8 +8,26 @@ function onReady(){
     $('.to-do-list').on('click', '.edit-btn', editTask);
     $('.to-do-list').on('click', 'label', toggleImportance);
     $('.to-do-list').on('click', '.complete-btn', markComplete);
+    $('#sort-selector-btn').on('click', sortBy);
 };
 
+function sortBy(){
+    console.log('in sortBy');
+    console.log('Sorting by: ', $('#sort-selector').val());
+    sortBy = $('#sort-selector').val();
+    sortBy = { sortBy: sortBy}
+
+    $.ajax({
+        method: 'GET',
+		url: `/toDo/sort`,
+        data: saveEdit
+    }).then(function(response) {
+        //console.log(response);
+        renderToDoList(response);
+    }).catch(function(error){
+        console.log('error in GET', error);
+    });
+}
 function markComplete(){
     const id = $(this).data('id');
     console.log(id);
@@ -36,7 +54,7 @@ function toggleImportance(){
 		url: `/toDo/favorite/${id}`,
 	}).then(function () {
 		console.log(`Todo #${id} importance toggle in DB`);
-		refreshToDoList();
+		//refreshToDoList();
 	}).catch(function (error) {
 		alert(`markReady function failure:`, error);
 	});
