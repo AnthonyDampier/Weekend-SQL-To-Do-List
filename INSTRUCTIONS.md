@@ -42,12 +42,12 @@ We would recommend you spend some time thinking about how to approach this probl
 
 ## Stretch Goals
 
-For each of your strech goals, you will be practicing git branching. Please refer to the branching notes for a reminder on commands. Each branch will be merged into main using `--no-ff`. This will allow us to see that you branched your feature when you turn in your code.
+For each of your stretch goals, you will be practicing git branching. Please refer to the branching notes for a reminder on commands. Each branch will be merged into main using `--no-ff`. This will allow us to see that you branched your feature when you turn in your code.
 
 - `feature-styling-bootstrap` 
 
     - [ ]  Add Bootstrap to the front end and style it up!
-      -  Buttons -- make the creation buttons and completion buttons green and the delete red.
+      - Buttons -- make the creation buttons and completion buttons green and the delete red.
       -  Inputs -- make your text inputs styled in the bootstrap way
       -  Responsive -- make your app responsive to different screen sizes -- check out the [Layout](https://getbootstrap.com/docs/4.1/layout/overview/) section
 
