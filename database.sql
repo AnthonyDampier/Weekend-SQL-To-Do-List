@@ -4,11 +4,11 @@ CREATE TABLE "to_do_list" (
 	"title" varchar(50) NOT NULL,
 	"dueDate" DATE,
 	"time" time,
-	"isCompleted" boolean NOT NULL,
+	"isCompleted" boolean NOT NULL
 );
 --
 INSERT INTO "to_do_list" 
-	("favorite", "title", "dueDate", "time", "isComplete) 
+	("favorite", "title", "dueDate", "time", "isCompleted") 
 VALUES
 	('false', 'ThingToDo1', '12-21-2021', '12:12', 'false'),
 	('false', 'ThingToDo2', '12-13-2021', '16:12', 'false'),

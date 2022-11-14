@@ -10,7 +10,7 @@
 }
 
 body {
-	background-color: var(--craft);
+	background-color: var(--graphite);
 	width: 980px;
 	margin: auto;
 	color: var(--softWhite);
