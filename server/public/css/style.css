@@ -97,7 +97,7 @@ button.complete-btn {
 	height: 2em;
 	font-size: large;
 	padding: 0;
-	background-color: var(--concrete);
+	background-color: transparent;
 }
 
 input.check-box {
