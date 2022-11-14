@@ -6,7 +6,7 @@ function onReady(){
     $('#enter-btn').on('click', addToDo);
     $('.to-do-list').on('click', '.delete-btn', deleteTask);
     $('.to-do-list').on('click', '.edit-btn', editTask);
-    $('.to-do-list').on('click', 'label', toggleImportance);
+    $('.to-do-list').on('click', '#favorite-toggle', toggleImportance);
     $('.to-do-list').on('click', '.complete-btn', markComplete);
     $('#sort-selector-btn').on('click', sortBy);
 };
@@ -154,6 +154,10 @@ function addToDo(){
     const favorite = $('#favorite-selector').val();
     // PUT object route to DB
     const isCompleted = false;
+    if (!title || !date || !time){
+        alert('Please fill all inputs to create a todo item.');
+        return;
+    }
     newToDo = {
         title: title,
         date: date,
@@ -202,9 +206,9 @@ function renderToDoList(toDoList) {
       // For each book, append a new row to our table
         $('.to-do-list').append(`
         <div class="task">
-                <label id="favorite-toggle" data-id="${toDo.id}" value=${toDo.favorite}>
+                <button id="favorite-toggle" data-id="${toDo.id}" value=${toDo.favorite}>
                 ${toDo.favorite ? '⭐️' : ' ✩ '}
-                </label>
+                </button>
                 <input 
                     type="text" 
                     class="text ${toDo.isCompleted ? 'complete' : 'not-complete'}"" 

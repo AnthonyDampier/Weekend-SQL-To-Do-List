@@ -43,6 +43,11 @@ button {
 
 }
 
+button#favorite-toggle{
+	width: 26px;
+	background-color: transparent;
+}
+
 button.edit-btn {
 	background-color: var(--graphite);
 	color: var(--softWhite);
