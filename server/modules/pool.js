@@ -18,6 +18,13 @@ if (process.env.DATABASE_URL){
             rejectionUnauthorized: false
         }
     });
+} else {
+    pool = new pg.Pool({
+        host: 'localhost', 
+        port: 5432, 
+        max: 10, 
+        idleTimeoutMillis: 30000 
+    })
 }
 
 pool.on("connect", () => {
