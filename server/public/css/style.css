@@ -1,7 +1,7 @@
 :root {
 	--softWhite: #eeeeee;
 	--concrete: #C5BAAA;
-	--craft: #806D61;
+	--craft: #493f39;
 	--brightBrick: #EE7828;
 	--red: #fb2b06;
 	--graphite: #2C2C2C;
@@ -10,7 +10,7 @@
 }
 
 body {
-	background-color: var(--graphite);
+	background-color: var(--craft);
 	width: 980px;
 	margin: auto;
 	color: var(--softWhite);
@@ -93,8 +93,8 @@ button#enter-btn {
 }
 
 button.complete-btn {
-	width: 1.75em;
-	height: 1.75em;
+	width: 2em;
+	height: 2em;
 	font-size: large;
 	padding: 0;
 	background-color: transparent;
@@ -139,7 +139,7 @@ select {
 }
 
 input.time {
-	width: 8em;
+	width: 7.5em;
 }
 
 input.date {	
